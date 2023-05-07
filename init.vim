@@ -391,7 +391,7 @@ nnoremap <leader>N :NERDTreeFocus<CR>
 "nnoremap <C-t> :NERDTreeToggle<CR>
 "nnoremap <C-f> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['^__pycache__$', '^.idea$', '^.DS_Store$', '^.pytest_cache$', '^.git']
+let g:NERDTreeIgnore = ['^__pycache__$', '^.idea$', '^.DS_Store$', '^.pytest_cache$', '^.git$']
 
 
 " Git plugin 
