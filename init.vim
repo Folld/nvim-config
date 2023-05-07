@@ -17,19 +17,13 @@ set smartindent
 set tabstop=2
 set expandtab
 set shiftwidth=2
-<<<<<<< HEAD
-=======
 set updatetime=100
->>>>>>> d331552 (init)
 
 inoremap jk <esc>
 
 call plug#begin('~/.vim/plugged')
 
-<<<<<<< HEAD
-=======
 " autocomplete
->>>>>>> d331552 (init)
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -52,10 +46,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
-<<<<<<< HEAD
-=======
-"
->>>>>>> d331552 (init)
+
 " TS from here https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -70,12 +61,10 @@ Plug 'bmatcuk/stylelint-lsp'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-<<<<<<< HEAD
 " Convenient floating terminal window
-"Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm'
 
 Plug 'ray-x/lsp_signature.nvim'
-=======
 " Project and file navigation
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
@@ -86,7 +75,6 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'voldikss/vim-floaterm'
->>>>>>> d331552 (init)
 
 call plug#end()
 
@@ -109,32 +97,10 @@ let g:prettier#quickfix_enabled = 0
 let g:sneak#label = 1
 
 colorscheme gruvbox
-<<<<<<< HEAD
-"colorscheme OceanicNext
-"let g:material_terminal_italics = 1
-" variants: default, palenight, ocean, lighter, darker, default-community,
-"           palenight-community, ocean-community, lighter-community,
-"           darker-community
-"let g:material_theme_style = 'darker'
-"colorscheme material
-if (has('termguicolors'))
-  set termguicolors
-endif
-
-" variants: mirage, dark, dark
-"let ayucolor="mirage"
-"colorscheme ayu
-=======
->>>>>>> d331552 (init)
 
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 
-<<<<<<< HEAD
-lua << EOF
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-=======
 lua <<EOF
 vim.opt.completeopt= "menu,menuone,noselect"
 
@@ -142,7 +108,6 @@ local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
->>>>>>> d331552 (init)
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -150,10 +115,7 @@ local async = require "plenary.async"
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
-<<<<<<< HEAD
-=======
 local luasnip = require'luasnip'
->>>>>>> d331552 (init)
 cmp.setup {
   completion = {
     autocomplete = false
@@ -164,36 +126,6 @@ cmp.setup {
     end,
   },
   mapping = {
-<<<<<<< HEAD
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-=======
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -223,7 +155,6 @@ cmp.setup {
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
->>>>>>> d331552 (init)
   },
   sources = {
     { name = 'nvim_lsp' },
