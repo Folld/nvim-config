@@ -17,11 +17,19 @@ set smartindent
 set tabstop=2
 set expandtab
 set shiftwidth=2
+<<<<<<< HEAD
+=======
+set updatetime=100
+>>>>>>> d331552 (init)
 
 inoremap jk <esc>
 
 call plug#begin('~/.vim/plugged')
 
+<<<<<<< HEAD
+=======
+" autocomplete
+>>>>>>> d331552 (init)
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -44,6 +52,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
+<<<<<<< HEAD
+=======
+"
+>>>>>>> d331552 (init)
 " TS from here https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -58,10 +70,23 @@ Plug 'bmatcuk/stylelint-lsp'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
+<<<<<<< HEAD
 " Convenient floating terminal window
 "Plug 'voldikss/vim-floaterm'
 
 Plug 'ray-x/lsp_signature.nvim'
+=======
+" Project and file navigation
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons' |
+
+Plug 'airblade/vim-gitgutter'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'voldikss/vim-floaterm'
+>>>>>>> d331552 (init)
 
 call plug#end()
 
@@ -84,6 +109,7 @@ let g:prettier#quickfix_enabled = 0
 let g:sneak#label = 1
 
 colorscheme gruvbox
+<<<<<<< HEAD
 "colorscheme OceanicNext
 "let g:material_terminal_italics = 1
 " variants: default, palenight, ocean, lighter, darker, default-community,
@@ -98,13 +124,25 @@ endif
 " variants: mirage, dark, dark
 "let ayucolor="mirage"
 "colorscheme ayu
+=======
+>>>>>>> d331552 (init)
 
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
 
+<<<<<<< HEAD
 lua << EOF
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+=======
+lua <<EOF
+vim.opt.completeopt= "menu,menuone,noselect"
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+>>>>>>> d331552 (init)
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -112,6 +150,10 @@ local async = require "plenary.async"
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+<<<<<<< HEAD
+=======
+local luasnip = require'luasnip'
+>>>>>>> d331552 (init)
 cmp.setup {
   completion = {
     autocomplete = false
@@ -122,6 +164,7 @@ cmp.setup {
     end,
   },
   mapping = {
+<<<<<<< HEAD
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -150,6 +193,37 @@ cmp.setup {
         fallback()
       end
     end,
+=======
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+>>>>>>> d331552 (init)
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -241,8 +315,11 @@ require'lspconfig'.stylelint_lsp.setup{
     }
   }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d331552 (init)
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', 'rust_analyzer' }
@@ -256,7 +333,10 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d331552 (init)
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
 if v:version < 700 || exists('loaded_bclose') || &cp
@@ -334,7 +414,11 @@ map gn :bn<cr>
 map gp :bp<cr>
 map gw :Bclose<cr>
 
+<<<<<<< HEAD
 " Run Python and C files by Ctrl+h
+=======
+"" Run Python and C files by Ctrl+h
+>>>>>>> d331552 (init)
 autocmd FileType python map <buffer> <C-h> :w<CR>:exec '!python3.11' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <C-h> <esc>:w<CR>:exec '!python3.11' shellescape(@%, 1)<CR>
 
@@ -344,13 +428,20 @@ autocmd FileType c imap <buffer> <C-h> <esc>:w<CR>:exec '!gcc' shellescape(@%, 1
 autocmd FileType sh map <buffer> <C-h> :w<CR>:exec '!bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <C-h> <esc>:w<CR>:exec '!bash' shellescape(@%, 1)<CR>
 
+<<<<<<< HEAD
 autocmd FileType python set colorcolumn=79
+=======
+autocmd FileType python set colorcolumn=120
+>>>>>>> d331552 (init)
 
 set relativenumber
 set rnu
 
+<<<<<<< HEAD
 let g:transparent_enabled = v:true
 
+=======
+>>>>>>> d331552 (init)
 tnoremap <Esc> <C-\><C-n>
 
 " Telescope bindings
@@ -378,9 +469,72 @@ EOF
 " Fast component creating for React app
 command CreateComponent :terminal '/Users/alexeygoloburdin/code/lms/frontend/createcomponent.py'
 
+<<<<<<< HEAD
 " White colors for LSP messages in code
 set termguicolors
 hi DiagnosticError guifg=White
 hi DiagnosticWarn  guifg=White
 hi DiagnosticInfo  guifg=White
 hi DiagnosticHint  guifg=White
+=======
+
+" NERDTree plugin
+autocmd StdinReadPre * let s:std_in=1
+
+"" Start NERDTree when Vim starts with a directory argument.
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+"" Start NERDTree when Vim is started without file arguments.
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>N :NERDTreeFocus<CR>
+"nnoremap <C-n> :NERDTree<CR>
+"nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+let g:NERDTreeIgnore = ['^__pycache__$', '^.idea$', '^.DS_Store$', '^.pytest_cache$', '^.git']
+
+
+" Git plugin 
+ let g:NERDTreeGitStatusIndicatorMapCustom = {
+               \ 'Modified'  :'✹',
+               \ 'Staged'    :'✚',
+               \ 'Untracked' :'✭',
+               \ 'Renamed'   :'➜',
+               \ 'Unmerged'  :'═',
+               \ 'Deleted'   :'✖',
+               \ 'Dirty'     :'✗',
+               \ 'Ignored'   :'.',
+               \ 'Clean'     :'✔︎',
+               \ 'Unknown'   :'?',
+               \ }
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+
+"" GIT GUTTER
+"" You can jump between hunks with [c and ]c. You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
+"" You cannot unstage a staged hunk.
+"" After updating the signs, the plugin fires the GitGutter User autocommand.
+"" After staging a hunk or part of a hunk, the plugin fires the GitGutterStage User autocommand.
+
+
+" Use fontawesome icons as signs
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+let g:gitgutter_override_sign_column_highlight = 1
+highlight SignColumn guibg=bg
+highlight SignColumn ctermbg=bg
+
+" status bar 
+let g:airline#extensions#tabline#enabled = 1
+
+" Inlinte terminal
+let g:floaterm_position="top"
+nnoremap <leader>t :FloatermToggle --height=0.1 --wintype=top --name=floaterm1 --position=top<CR>
+
+
+>>>>>>> d331552 (init)
