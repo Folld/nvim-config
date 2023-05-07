@@ -46,7 +46,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
-
+"
 " TS from here https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -61,10 +61,6 @@ Plug 'bmatcuk/stylelint-lsp'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-" Convenient floating terminal window
-Plug 'voldikss/vim-floaterm'
-
-Plug 'ray-x/lsp_signature.nvim'
 " Project and file navigation
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
@@ -246,11 +242,6 @@ require'lspconfig'.stylelint_lsp.setup{
     }
   }
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d331552 (init)
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', 'rust_analyzer' }
@@ -264,10 +255,6 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d331552 (init)
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
 if v:version < 700 || exists('loaded_bclose') || &cp
@@ -345,11 +332,7 @@ map gn :bn<cr>
 map gp :bp<cr>
 map gw :Bclose<cr>
 
-<<<<<<< HEAD
-" Run Python and C files by Ctrl+h
-=======
 "" Run Python and C files by Ctrl+h
->>>>>>> d331552 (init)
 autocmd FileType python map <buffer> <C-h> :w<CR>:exec '!python3.11' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <C-h> <esc>:w<CR>:exec '!python3.11' shellescape(@%, 1)<CR>
 
@@ -359,20 +342,11 @@ autocmd FileType c imap <buffer> <C-h> <esc>:w<CR>:exec '!gcc' shellescape(@%, 1
 autocmd FileType sh map <buffer> <C-h> :w<CR>:exec '!bash' shellescape(@%, 1)<CR>
 autocmd FileType sh imap <buffer> <C-h> <esc>:w<CR>:exec '!bash' shellescape(@%, 1)<CR>
 
-<<<<<<< HEAD
-autocmd FileType python set colorcolumn=79
-=======
 autocmd FileType python set colorcolumn=120
->>>>>>> d331552 (init)
 
 set relativenumber
 set rnu
 
-<<<<<<< HEAD
-let g:transparent_enabled = v:true
-
-=======
->>>>>>> d331552 (init)
 tnoremap <Esc> <C-\><C-n>
 
 " Telescope bindings
@@ -400,14 +374,6 @@ EOF
 " Fast component creating for React app
 command CreateComponent :terminal '/Users/alexeygoloburdin/code/lms/frontend/createcomponent.py'
 
-<<<<<<< HEAD
-" White colors for LSP messages in code
-set termguicolors
-hi DiagnosticError guifg=White
-hi DiagnosticWarn  guifg=White
-hi DiagnosticInfo  guifg=White
-hi DiagnosticHint  guifg=White
-=======
 
 " NERDTree plugin
 autocmd StdinReadPre * let s:std_in=1
@@ -468,4 +434,3 @@ let g:floaterm_position="top"
 nnoremap <leader>t :FloatermToggle --height=0.1 --wintype=top --name=floaterm1 --position=top<CR>
 
 
->>>>>>> d331552 (init)
