@@ -433,4 +433,3 @@ let g:airline#extensions#tabline#enabled = 1
 let g:floaterm_position="top"
 nnoremap <leader>t :FloatermToggle --height=0.1 --wintype=top --name=floaterm1 --position=top<CR>
 
-
