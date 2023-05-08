@@ -439,3 +439,5 @@ let g:ale_linters = {
       \ 'python': ['pylama'],
       \ }
 g:ale_disable_lsp = 1
+let g:ale_use_neovim_diagnostics_api = 1
+let g:ale_python_pylama_options = '--linters pycodestyle,pyflakes,mccabe,pylint --max-line-length=120'
