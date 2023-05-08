@@ -71,6 +71,7 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'voldikss/vim-floaterm'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -433,3 +434,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:floaterm_position="top"
 nnoremap <leader>t :FloatermToggle --height=0.1 --wintype=top --name=floaterm1 --position=top<CR>
 
+
+let g:ale_linters = {
+      \ 'python': ['pylama'],
+      \ }
+g:ale_disable_lsp = 1
